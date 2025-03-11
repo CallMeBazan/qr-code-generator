@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+
+}
+
+body {
+    background-color: #18181B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto; 
+    padding-top: 20px;
+    padding-top: 40px;
+ 
+}
+
+.container {
+    width: 90%;
+    max-width: 400px;
+    padding: 25px 35px;
+    position: static;
+    top: 50%;
+    left: 50%;
+    transform: none;
+    background: #ffffff;
+    border-radius: 10px;
+}
+
+.container input {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #1E40AF;
+    outline: 0;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border-radius: 5px;
+}
+
+
+.container button {
+    width: 100%;
+    height: 50px;
+    background: #1E40AF;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px;
+    cursor: pointer;
+    margin: 20px 0;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgb(102, 102, 102), 0 0 1em blue, 0 0 0.2em blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
+
+#img_Box {
+    width: 200px;
+    border-radius: 5px;
+    max-height: 0;
+    overflow: hidden;
+    display: none;
+    transition: 0.5s;
+}
+
+#img_Box img {
+    width: 100%;
+    padding: 10px;
+}
+
+#img_Box.show-img {
+    max-height: 300px;
+    margin: 10px auto;
+    border: 1px solid #18181B;
+    display: block;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.container #download_Btn {
+    background-color: green;
+
+}
+
+.container button:hover {
+    opacity: 0.85;
+    transform: scale(1.05);
+    transition: 0.2s ease-in-out;
+}
+
+
+#download_Btn i,
+#generate_Qr i {
+    margin-left: 10px;
+    font-size: 1.2rem;
+}
+
+
+/* footer */
+.footer {
+    width: 100%;
+    padding: 15px 10px;
+    text-align: center;
+    background-color: transparent;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.footer ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer a {
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    text-shadow: 2px 2px 0 #ff005e, 4px 4px 0 #00d4ff;
+    animation: shadow-dance-footer 2.5s infinite;
+}
+
+.footer a:hover {
+    color: #A1A1AA;
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
+}
+
+
+@keyframes shadow-dance-footer {
+    0%, 100% {
+        text-shadow: 2px 2px 0 #ff005e, 4px 4px 0 #00d4ff;
+    }
+    50% {
+        text-shadow: -2px -2px 0 #00d4ff, -4px -4px 0 #ff005e;
+    }
+}
+
+
+
+.footer li:hover ~ li p {
+    animation: wave-animation-footer 0.3s infinite;
+}
+
+
+@keyframes wave-animation-footer {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(10deg);
+    }
+    75% {
+        transform: rotate(-8deg);
+    }
+}
+
+/* Response */
+@media (max-width: 500px) {
+    .footer ul {
+        flex-direction: row;
+        gap: 10px;
+    }
+}
+
+
+/* qr code genetattor animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
+/* heading animation */
+.shadow-dance-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+ 
+    
+    
+}
+
+.shadow-dance-text {
+    margin-top: 0; 
+    font-size: 3rem; 
+    text-align: center;
+    font-size: 4rem;
+    color: #fff;
+    text-shadow: 5px 5px 0 #ff005e, 10px 10px 0 #00d4ff;
+    animation: shadow-dance 2s infinite;
+    position: static;
+}
+
+@keyframes shadow-dance {
+    0%, 100% {
+        text-shadow: 4px 4px 0 #ff005e, 8px 8px 0 #00d4ff;
+    }
+    50% {
+        text-shadow: -4px -4px 0 #00d4ff, -8px -8px 0 #ff005e;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .shadow-dance-container {
+        margin-bottom: 40px;
+    }
+
+    .shadow-dance-text {
+        font-size: 2.5rem; 
+        text-align: center;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 400px;
+        padding: 20px;
+    }
+}
+

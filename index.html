@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazan QR Code Generator</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body>
+    <!-- heading animation -->
+    <div class="shadow-dance-container">
+        <h1 class="shadow-dance-text">Generate Your QR For Free...</h1>
+    </div>
+
+<!-- container and qr Generator -->
+    <div class="container">
+        <input type="text" id="user_text" placeholder="Your URL">
+        <div id="img_Box">
+            <img src="" id="qr_img">
+        </div>
+
+        <canvas id="qr_canvas" style="display: none;"></canvas>
+        <button id="generate_Qr" onclick="generateQR()">Generate QR<i class="ri-qr-code-line"></i></button>
+        <button id="download_Btn" style="display: none;"> Download QR<i class="ri-download-cloud-2-line"></i>
+        </button>
+    </div>
+
+    <footer class="footer">
+        <ul>
+            
+            <li><a href="#">Call_Me_Bazan:</a></li>
+            <li><a href="#"><i class="ri-youtube-line"></i></a></li>
+            <li><a href="#"><i class="ri-github-line"></i></a></li>
+            <li><a href="#"><i class="ri-twitter-x-line"></i></a></li>
+        </ul>
+    </footer>
+    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let img_Box = document.getElementById('img_Box');
+            let qr_img = document.getElementById('qr_img');
+            let qr_canvas = document.getElementById('qr_canvas');
+            let user_text = document.getElementById('user_text');
+            let download_Btn = document.getElementById('download_Btn');
+
+            function generateQR() {
+                if (user_text.value.trim() !== "") {
+                    qr_img.crossOrigin = "anonymous";
+                    qr_img.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + encodeURIComponent(user_text.value);
+
+
+                    qr_img.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + user_text.value;
+                    img_Box.classList.add("show-img");
+                    download_Btn.style.display = "block";
+                } else {
+                    alert("Please enter your URL!");
+                    img_Box.classList.remove("show-img");
+                    download_Btn.style.display = "none";
+                }
+            }
+
+
+            download_Btn.onclick = function () {
+                let ctx = qr_canvas.getContext("2d");
+                qr_canvas.width = qr_img.width;
+                qr_canvas.height = qr_img.height;
+
+
+                ctx.drawImage(qr_img, 0, 0, qr_canvas.width, qr_canvas.height);
+
+
+                let link = document.createElement("a");
+                link.href = qr_canvas.toDataURL("image/png");
+                link.download = "QRCode.png";
+                link.click();
+            };
+
+            window.generateQR = generateQR;
+        });
+    </script>
+</body>
